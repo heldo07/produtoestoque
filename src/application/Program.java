@@ -1,28 +1,52 @@
 package application;
 
-import entities.Product;
+import entities.Account;
 
 import java.util.Locale;
 import java.util.Scanner;
 
-
 public class Program {
-    public static void main(String[] args){
+    private static Account account;
+
+    public static void main(String[] arg){
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
+        Account account;
 
-        Product product = new Product();
-        System.out.println("Enter product data: ");
-        System.out.print("Name: ");
-        product.name = sc.nextLine();
-        System.out.print("Price: ");
-        product.price = sc.nextDouble();
-        System.out.print("Quantity in stock: ");
-        product.quantity = sc.nextInt();
+        System.out.print("Enter Account number");
+        int number = sc.nextInt();
+        System.out.print("Enter account holder:  ");
+        sc.nextLine();
+        String holder = sc.nextLine();
+        System.out.print("Is the an initial deposit (y/n)");
+        char response = sc.next().charAt(0);
+        if (response == 'y'){
+            System.out.print("Enter initial deposit value: ");
+            double initialDeposit = sc.nextDouble();
+            account = new Account(number, holder, initialDeposit);
+        }
+        else {
+            account = new Account(number,holder);
+        }
+        System.out.println();
+        System.out.println("Account data:");
+        System.out.println(account);
 
-        System.out.println(product.name + ", " + product.price + ", " + product.quantity);
+        System.out.println();
+        System.out.println("Enter a deposit value:  ");
+        double depositValue = sc.nextDouble();
+        account.deposit(depositValue);
+        System.out.println("Updated account data: ");
+        System.out.println(account);
 
+        System.out.println();
+        System.out.println("Enter a withdraw value:  ");
+        double withdrawValue = sc.nextDouble();
+        account.withdraw(withdrawValue);
+        System.out.println("Updated account data: ");
+        System.out.println(account);
 
         sc.close();
     }
 }
+/acenelio/encapsulation1-java
