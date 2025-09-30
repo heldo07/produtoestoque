@@ -30,7 +30,7 @@ public class Account {
                 +",Holder: "
                 + holder
                 +",Balance: $"
-                + String.format("%.2f, balance");
+                + String.format("%.2f%n", balance);
 
     }
 }

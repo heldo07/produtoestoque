@@ -49,4 +49,3 @@ public class Program {
         sc.close();
     }
 }
-/acenelio/encapsulation1-java
